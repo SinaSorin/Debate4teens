@@ -29,36 +29,31 @@ include_once 'include/dbh.inc.php';
 <div class="container">
 
 				<div class="navbar-header">
-					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
 							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
-					<!-- /Logo -->
-
-					<!-- Mobile toggle -->
 					<button class="navbar-toggle">
 						<span></span>
 					</button>
-					<!-- /Mobile toggle -->
 				</div>
-
-				<!-- Navigation -->
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a class="link"  href="index.php">Acasa</a></li>
+						<li><a class="link"  href="index.php">Acasă</a></li>
 						<li><a class="link"  href="format.php">Format</a></li>
-						<li><a class="link"  href="motiuni.php">Motiuni</a></li>
+						<li><a class="link"  href="motiuni.php">Moțiuni</a></li>
 						<li><a class="link"  href="argumentare.php">Argumentare</a></li>
+						<li><a class="link"  href="impromptu.php">Impromptu</a></li>
+						<li><a class="link"  href="documentare.php">Documentare</a></li>
 						<?php
 						if(!isset($_SESSION['u_id']))
 							echo '
-						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conecteaza-te</a></li>
-						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Inregistreaza-te</a></li>';
+						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conectează-te</a></li>
+						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Înregistrează-te</a></li>';
 						else
 							echo '
 						<li><a class="link" href="cazuri.php">Cazuri</a></li>
-						<li><a class="link" href="include/logout.inc.php" id="logout">Deconecteaza-te</a></li>';
+						<li><a class="link" href="include/logout.inc.php" id="logout">Deconectează-te</a></li>';
 						
 						
 						?>
@@ -67,16 +62,51 @@ include_once 'include/dbh.inc.php';
  
 
 			</div>
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Conectează-te</h1><br>
+				  <form action="include/login.inc.php" autocomplete="off" method="POST">
+						<input type="text" name="uid" placeholder="Nume de utilizator"> 
+						<input type="password" name="pwd" placeholder="Parolă">
+						<input type="submit" name="submit" class="login loginmodal-submit" value="Conectare">
+				  </form>
+					
+				  
+				</div>
+			</div>
+		  </div>
+		  
+	
+
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="registermodal-container">
+					<h1>Creează un cont</h1><br>
+				  <form action="include/signup.inc.php" method="POST">
+						<input type="text" name="first" autocomplete="off" placeholder="Nume"> 
+						<input type="text" name="last" autocomplete="off" placeholder="Prenume">
+						<input type="text" name="uid" autocomplete="off" placeholder="Nume de utilizator">
+						<input type="text" name="email" autocomplete="off" placeholder="Email">
+						<input type="password" name="pwd" placeholder="Parolă">
+						<input type="password" name="pwd2" placeholder="Confirmă parolă">
+						<input type="submit" name="submit" class="login loginmodal-submit" value="Înregistrare">
+				  </form>
+					
+				 
+				</div>
+			</div>
+		  </div>
 <div class="row">
 					 <center>
-						<h2>Exemple de motiuni</h2>
+						<h2>Exemple de moțiuni</h2>
  
 					<div class="col-md-4">
 						<div class="feature">
 							<i class="icon fa fa-flask"></i>
 							<div class="feature-content">
-								<h4>Stiinta</h4>
-								<p>AP crede ca organismele modificate genetic ar trebui interzise.</p>
+								<h4>Știință</h4>
+								<p>AP crede că organismele modificate genetic ar trebui interzise.</p>
 							</div>
 						</div>
 					</div>
@@ -86,7 +116,7 @@ include_once 'include/dbh.inc.php';
 							<i class="icon material-icons">&#xe7ef;</i>
 							<div class="feature-content">
 								<h4>Societate</h4>
-								<p>AP ar interzice detinerea de arme de foc de catre civili</p>
+								<p>AP ar interzice deținerea de arme de foc de către civili.</p>
 							</div>
 						</div>
 					</div>
@@ -96,7 +126,7 @@ include_once 'include/dbh.inc.php';
 							<i class="icon fas fa-comment"></i>
 							<div class="feature-content">
 								<h4>Filosofie</h4>
-								<p>AP nu isi doreste nemurirea</p>
+								<p>AP nu își dorește nemurirea.</p>
 							</div>
 						</div>
 					</div>
@@ -107,9 +137,9 @@ include_once 'include/dbh.inc.php';
 				<hr/>
 				<div class="col-md-6">
 						<h3></h3>
-						<p class="lead">Motiunea este o afirmatie asupra careia oamenii responsabili pot sa 
-detina opinii diferite care sa fie sustinute cu ajutorul unor dovezi sau
-probe,exemple,ilustrari organizate intr-un rationament</p>
+						<p class="lead">Moțiunea este o afirmație asupra căreia oamenii responsabili pot să 
+dețină opinii diferite care să fie susținute cu ajutorul unor dovezi sau
+probe,exemple,ilustrări organizate într-un raționament</p>
 					</div>
 
 					<div class="col-md-5 col-md-offset-1">
@@ -121,3 +151,4 @@ src="http://www.youtube.com/embed/coINBDl0XFA">
 </div>
 
 </body>
+</html>

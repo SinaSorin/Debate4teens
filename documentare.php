@@ -2,7 +2,8 @@
 session_start();
 include_once 'include/dbh.inc.php';
 
- ?><html>
+ ?>
+ <html>
  <head>
  <title>Index</title>
  <link rel="shortcut icon" href="motanel.png" type="image/png">
@@ -20,34 +21,17 @@ include_once 'include/dbh.inc.php';
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>  
-<style>
-.nav>li>a {
-	color:white;
-}
-.nav>li>a:hover  {
-	color:white;
-}
-
-</style>
- </head>
- <body>
- 
-			
- <div class="back" style="background-image: url(poze/1.png)">
- 
- <div class="overlay">
-
-   <div class="ceva"><b><h1>Debate4Teens</h1>
-<p class="obiectiv">Obiectivul principal al acestui site este de a  oferi informații cu privire la formatul dezbaterilor academice și influența deosebită pe care acestea o au asupra individului.Sperăm ca comunitatea de debateri să crească.</p></b>
-</div>
-		  </div>
-		  <div class="container">
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+<head>
+</head>
+<body>
+<div class="container">
 
 				<div class="navbar-header">
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
-							<span class="debate" style="color:white">Debate4teens</span>
+							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
 					<button class="navbar-toggle">
@@ -75,10 +59,10 @@ include_once 'include/dbh.inc.php';
 						?>
 						
 					</ul>
+ 
 
 			</div>
-  </div>
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	  <div class="modal-dialog">
 				<div class="loginmodal-container">
 					<h1>Conectează-te</h1><br>
@@ -108,51 +92,103 @@ include_once 'include/dbh.inc.php';
 						<input type="password" name="pwd2" placeholder="Confirmă parolă">
 						<input type="submit" name="submit" class="login loginmodal-submit" value="Înregistrare">
 				  </form>
-					
-				 
 				</div>
 			</div>
 		  </div>
-  <center>
-	
-  <img src="poze/arrow2.png" class="sageata">
-  </center>
-     <div class="desc">
-    <div class="continut">
-      <p class="subtitlu">
-           Bine ați venit în lumea dezbaterilor!
-        </p>
-		<p class="lead"> Debate4Teens îți oferă posibilitatea de:</p>
-        <p><span class="spatiu"></span>
-            <div class="feature">
-							<i class=" icon glyphicon glyphicon-book"></i>
-							<div class="feature-content">
-								<h4>A înțelege formatul dezbaterilor </h4>
-								<p>Oferim informații referitoare la moțiuni, format,modalități de argumentare,rolul vorbitorilor.</p>
-							</div>
-						</div>
-						<div class="feature">
-							<i class="icon glyphicon glyphicon-eye-open"></i>
-							<div class="feature-content">
-								<h4>A te documenta</h4>
-								<p>Pe această platformă poți face teste interactive.</p>
-							</div>
-						</div>
-						<div class="feature">
-							<i class="icon glyphicon glyphicon-pencil"></i>
-							<div class="feature-content">
-								<h4>A-ți construi cazul.</h4>
-								<p>Site-ul conține șabloane ce facilitează construirea argumentelor.</p>
-							</div>
-						</div>
-        </p>
-		
-    </div>
-    
-    </div>
 
-  
-  
- </body>
+<div class="container">
+				<div class="row">
+					<div class="section-header text-center">
+						<h2>Documentează-te</h2>
+						<p class="lead">Poți dezbate pe orice temă.</p>
+					</div>
+				</div>
+				<div id="domenius-wrapper">
+					<div class="row">
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=1" class="domeniu-img">
+									<img src="./poze/cultura.png" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Cultură</center></a>
+								
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=2" class="domeniu-img">
+									<img src="./poze/educatie.png" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Educație</center></a>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=3" class="domeniu-img">
+									<img src="./poze/mediu.png" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Mediu</center></a>
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=4" class="domeniu-img">
+									<img src="./poze/sport.jpg" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Sport</center></a>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=5" class="domeniu-img">
+									<img src="./poze/sanatate.jpg" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Sănătate</center></a>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=6" class="domeniu-img">
+									<img src="./poze/politica.jpg" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Politică</center></a>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="lectii.php?id=7" class="domeniu-img">
+									<img src="./poze/filosofie.jpg" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Altele</center></a>
+							</div>
+						</div>
+						
+						<div class="col-md-3 col-sm-6 col-xs-6">
+							<div class="domeniu">
+								<a href="teste.php" class="domeniu-img">
+									<img src="./poze/teste.png" alt="">
+									<i class="domeniu-link-icon glyphicon glyphicon-search"></i>
+								</a>
+								<a class="domeniu-title link" href="#"><center>Teste</center></a>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+</body>
 </html>
-	

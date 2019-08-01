@@ -43,9 +43,8 @@ if(isset($_POST['submit'])) {
 						}else {
 							$hash1=md5($pwd);
 							$hashedPwd = sha1($hash1); //am criptat parola
-							$sql= "INSERT INTO user(user_first, user_last, user_email,user_uid, user_pwd) VALUES('$first' ,'$last','$email','$uid','$hashedPwd');";
+							$sql= "INSERT INTO user(user_first, user_last, user_email,user_uid, user_pwd,status) VALUES('$first' ,'$last','$email','$uid','$hashedPwd',0);";
 							mysqli_query($conn,$sql);//contul a fost creat
-							$sql="SELECT * FROM user WHERE user_uid='$uid' AND user_first='$first'";
 							header("Location: ../index.php?succes");
 						exit();
 					

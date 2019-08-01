@@ -44,37 +44,32 @@ include_once 'include/dbh.inc.php';
 <div class="container">
 
 				<div class="navbar-header">
-					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
 							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
-					<!-- /Logo -->
-
-					<!-- Mobile toggle -->
 					<button class="navbar-toggle">
 						<span></span>
 					</button>
-					<!-- /Mobile toggle -->
 				</div>
-
-				<!-- Navigation -->
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a class="link"  href="index.php">Acasa</a></li>
+						<li><a class="link"  href="index.php">Acasă</a></li>
 						<li><a class="link"  href="format.php">Format</a></li>
-						<li><a class="link"  href="motiuni.php">Motiuni</a></li>
+						<li><a class="link"  href="motiuni.php">Moțiuni</a></li>
 						<li><a class="link"  href="argumentare.php">Argumentare</a></li>
+						<li><a class="link"  href="impromptu.php">Impromptu</a></li>
+						<li><a class="link"  href="documentare.php">Documentare</a></li>
 
 						<?php
 						if(!isset($_SESSION['u_id']))
 							echo '
-						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conecteaza-te</a></li>
-						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Inregistreaza-te</a></li>';
+						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conectează-te</a></li>
+						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Înregistrează-te</a></li>';
 						else
 							echo '
 						<li><a class="link" href="cazuri.php">Cazuri</a></li>
-						<li><a class="link" href="include/logout.inc.php" id="logout">Deconecteaza-te</a></li>';
+						<li><a class="link" href="include/logout.inc.php" id="logout">Deconectează-te</a></li>';
 						
 						
 						?>
@@ -83,42 +78,53 @@ include_once 'include/dbh.inc.php';
  
 
 			</div>
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-     
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Adaugare motiune</h4>
-        </div>
-		<div class="modal-body">
-		<form action="include/motiune.inc.php" method="POST">
- 
-          
-				<input type="text" name="motiune" autocomplete="off" required placeholder="Motiune" class="inp"> 
-						</div>
-        <div class="modal-footer">
-						<input type="submit" name="submit" class="btn btn-default" value=" trimite">
-        </div>
-		 </form>
-		 
-      </div>
-      
-    </div>
-  </div>
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Conectează-te</h1><br>
+				  <form action="include/login.inc.php" autocomplete="off" method="POST">
+						<input type="text" name="uid" placeholder="Nume de utilizator"> 
+						<input type="password" name="pwd" placeholder="Parolă">
+						<input type="submit" name="submit" class="login loginmodal-submit" value="Conectare">
+				  </form>
+					
+				  
+				</div>
+			</div>
+		  </div>
+		  
+	
+
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="registermodal-container">
+					<h1>Creează un cont</h1><br>
+				  <form action="include/signup.inc.php" method="POST">
+						<input type="text" name="first" autocomplete="off" placeholder="Nume"> 
+						<input type="text" name="last" autocomplete="off" placeholder="Prenume">
+						<input type="text" name="uid" autocomplete="off" placeholder="Nume de utilizator">
+						<input type="text" name="email" autocomplete="off" placeholder="Email">
+						<input type="password" name="pwd" placeholder="Parolă">
+						<input type="password" name="pwd2" placeholder="Confirmă parolă">
+						<input type="submit" name="submit" class="login loginmodal-submit" value="Înregistrare">
+				  </form>
+					
+				 
+				</div>
+			</div>
+		  </div>
   <div class="hero-area section motiune_c ">
 
 			<div class="overlay1">
 				<div class="row">
 					<div class="col-md-6">
-						<h4 class="dezbatere lead">Dezbatere(din engleza – debate)
-							este o discutie, 
-							o polemica în contradictoriu 
-							a unei motiuni, urmându-se formarea 
-							unei gândiri critice si logice pentru 
-							însusirea si exersarea dialogului democratic. 
-							Aceasta metoda este un cadru destinat unei discutii 
+						<h4 class="dezbatere lead">Dezbatere(din engleză – debate)
+							este o discuție, 
+							o polemică în contradictoriu 
+							a unei moțiuni, urmându-se formarea 
+							unei gândiri critice și logice pentru 
+							însușirea și exersarea dialogului democratic. 
+							Aceasta metodă este un cadru destinat unei discuții 
 							structurate a unor tematici variate.</h4>
 
 					</div>
@@ -129,9 +135,9 @@ include_once 'include/dbh.inc.php';
 <div class="row" style="margin-bottom:40px;">
 <div class="col-md-6 col-md-offset-1">
 						<h2 class="white-text">Formatul dezbaterilor</h2>
-						<p class="lead white-text">Formatul dezbaterilor prevede trei vorbitori de fiecare echipa, cu doar doua echipe intr-o dezbatere. Aceste doua echipe sunt numite formal Guvern si Opozitie. Discursurile se desfasoara alternativ intre membrii celor doua echipe, cu membrii Guvernului primii. Dupa ce fiecare vorbitor a vorbit o data, al doilea sau primul vorbitor al fiecarei tabere prezinta un discurs de raspuns (sumativ),  cu discursul Opozitiei primul si cel al Guvernului al doilea.</p>
-                        <p class="lead white-text">Timpul pentru discursurile normale este de 8 minute, iar pentru discursurile de sumative de  4 minute. In timpul discursurilor obisnuite membri ai echipe adverse pot cere dreptul la interventii celui care sustine discursul. Nu se pot adresa interventii in timpul discursurilor sumative.</p>
-                        <p class="lead white-text"> Meciurile sunt urmarite de arbitrii(chair si shadow) care stabilesc echipa castigatoare.</p>
+						<p class="lead white-text">Formatul dezbaterilor prevede trei vorbitori de fiecare echipă, cu doar două echipe într-o dezbatere. Aceste două echipe sunt numite formal Guvern și Opoziție. Discursurile se desfășoară alternativ între membrii celor două echipe, cu membrii Guvernului primii. După ce fiecare vorbitor a vorbit o dată, al doilea sau primul vorbitor al fiecarei tabere prezintă un discurs de răspuns (sumativ),  cu discursul Opoziției primul și cel al Guvernului al doilea.</p>
+                        <p class="lead white-text">Timpul pentru discursurile normale este de 8 minute, iar pentru discursurile de sumative de  4 minute. În timpul discursurilor obișnuite membri ai echipe adverse pot cere dreptul la intervenții celui care susține discursul. Nu se pot adresa intervenții în timpul discursurilor sumative.</p>
+                        <p class="lead white-text"> Meciurile sunt urmărite de arbitrii(chair și shadow) care stabilesc echipa câstigătoare.</p>
 					</div>
 
 					<div class="col-md-5">
@@ -146,3 +152,4 @@ src="https://www.youtube.com/embed/R3yhHMVlmjA">
 		</div>
 
 </body>
+</html>

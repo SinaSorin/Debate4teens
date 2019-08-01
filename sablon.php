@@ -1,7 +1,8 @@
 <?php
 session_start();
 include_once 'include/dbh.inc.php';
-
+if(!isset($_SESSION['u_id']))
+		header("Location: index.php");
  ?>
  <html>
  <head>
@@ -29,36 +30,31 @@ include_once 'include/dbh.inc.php';
 <div class="container">
 
 				<div class="navbar-header">
-					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
 							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
-					<!-- /Logo -->
-
-					<!-- Mobile toggle -->
 					<button class="navbar-toggle">
 						<span></span>
 					</button>
-					<!-- /Mobile toggle -->
 				</div>
-
-				<!-- Navigation -->
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a class="link"  href="index.php">Acasa</a></li>
+						<li><a class="link"  href="index.php">Acasă</a></li>
 						<li><a class="link"  href="format.php">Format</a></li>
-						<li><a class="link"  href="motiuni.php">Motiuni</a></li>
+						<li><a class="link"  href="motiuni.php">Moțiuni</a></li>
 						<li><a class="link"  href="argumentare.php">Argumentare</a></li>
+						<li><a class="link"  href="impromptu.php">Impromptu</a></li>
+						<li><a class="link"  href="documentare.php">Documentare</a></li>
 						<?php
 						if(!isset($_SESSION['u_id']))
 							echo '
-						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conecteaza-te</a></li>
-						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Inregistreaza-te</a></li>';
+						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conectează-te</a></li>
+						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Înregistrează-te</a></li>';
 						else
 							echo '
 						<li><a class="link" href="cazuri.php">Cazuri</a></li>
-						<li><a class="link" href="include/logout.inc.php" id="logout">Deconecteaza-te</a></li>';
+						<li><a class="link" href="include/logout.inc.php" id="logout">Deconectează-te</a></li>';
 						
 						
 						?>
@@ -68,16 +64,13 @@ include_once 'include/dbh.inc.php';
 
 			</div>
 	<div id="main" class="col-md-12">
-						
-						
-						<!-- blog post -->
 						<div class="sablon">
 						<div class="sexi">
 						<a class="v s" id="h" onclick="sexi('s')">Statement</a>
-						<a class="v e" id="h" onclick="sexi('e')">Example</a>
 						<a class="v x" id="h" onclick="sexi('x')">Explanation</a>
+						<a class="v e" id="h" onclick="sexi('e')">Example</a>
 						<a class="v i" id="h" onclick="sexi('i')">Impact</a>
-						<a class="v sterge" id="h" onclick="sterge()">Sterge</a>
+						<a class="v sterge" id="h" onclick="sterge()">Șterge</a>
 						</div>
 						<hr></br>
 						
@@ -98,3 +91,4 @@ include_once 'include/dbh.inc.php';
 					<script type="text/javascript" src="js/functions.js"></script>
 
 </body>
+</html>

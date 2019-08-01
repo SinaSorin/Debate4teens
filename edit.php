@@ -25,11 +25,6 @@ if(!isset($_SESSION['u_id']))
 		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 <head>
-<style>
-.cos {
-	top:-30px;
-}
-</style>
 </head>
 <body>
 <div class="container">
@@ -45,21 +40,19 @@ if(!isset($_SESSION['u_id']))
 					</button>
 				</div>
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a class="link"  href="index.php">Acasă</a></li>
+						<li><a class="link"  href="index.php">Acasa</a></li>
 						<li><a class="link"  href="format.php">Format</a></li>
-						<li><a class="link"  href="motiuni.php">Moțiuni</a></li>
+						<li><a class="link"  href="motiuni.php">Motiuni</a></li>
 						<li><a class="link"  href="argumentare.php">Argumentare</a></li>
-						<li><a class="link"  href="impromptu.php">Impromptu</a></li>
-						<li><a class="link"  href="documentare.php">Documentare</a></li>
 						<?php
 						if(!isset($_SESSION['u_id']))
 							echo '
-						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conectează-te</a></li>
-						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Înregistrează-te</a></li>';
+						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conecteaza-te</a></li>
+						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Inregistreaza-te</a></li>';
 						else
 							echo '
 						<li><a class="link" href="cazuri.php">Cazuri</a></li>
-						<li><a class="link" href="include/logout.inc.php" id="logout">Deconectează-te</a></li>';
+						<li><a class="link" href="include/logout.inc.php" id="logout">Deconecteaza-te</a></li>';
 						
 						
 						?>
@@ -68,66 +61,49 @@ if(!isset($_SESSION['u_id']))
  
 
 			</div>
-		<div id="blog" class="section">
-			<div class="container">
-				<div class="row">
-					<div id="main" class="col-md-12">
-						<div class="blog-post">
-							<?php
-							$id_motiune=$_GET['id'];
-							$sql3="select * from motiuni where id=$id_motiune";
-							$result3=mysqli_query($conn,$sql3);
-							while($row3=mysqli_fetch_assoc($result3))
-							{
-								$content=$row3['nume'];
-							}
-							echo "<center><h2>$content</h2></center></br>";
-							
-							$sql="select * from argumente where id_motiune=$id_motiune";
-							$result=mysqli_query($conn,$sql);
-							$resultCheck=mysqli_num_rows($result);
-							if($resultCheck>0)
-							{
-								
-								$i=1;
-								
-								
-								
-								while($row=mysqli_fetch_assoc($result))
-								{	
-									$id_argument=$row['id'];
-									echo "<h3>Argumentul $i:  ".$row['titlu']."</h3><a class='glyphicon glyphicon-trash cos' href='include/deletea.php?id=$id_argument'></a></br></br>";
-									echo "<div>";
-									$id=$row['id'];
-									$sql2="select * from sec_arg where id_arg=$id";
-									$result2=mysqli_query($conn,$sql2);
-									$resultCheck2=mysqli_num_rows($result2);
-									while($row2=mysqli_fetch_assoc($result2))
-									{
-										$tip=$row2['tip'];
-										$continut=$row2['continut'];
-										echo "<p class='arg c$tip'>$continut</p>";
-									}
-										$i++;
-									echo "</div></br>";
-									
-									
-								}
-								
-							}
-							echo "<a href='sablon.php?id=$id_motiune'><div class='motiune'><center>Adauga argument</center></div></a>"
-							?>
+	<div id="main" class="col-md-12">
+						<div class="sablon">
+						<div class="sexi">
+						<a class="v s" id="h" onclick="sexi('s')">Statement</a>
+						<a class="v x" id="h" onclick="sexi('x')">Explanation</a>
+						<a class="v e" id="h" onclick="sexi('e')">Example</a>
+						<a class="v i" id="h" onclick="sexi('i')">Impact</a>
+						<a class="v sterge" id="h" onclick="sterge()">Sterge</a>
 						</div>
+						<hr></br>
+						<?php
+						$id=$_GET['id'];
+						 echo "<form action='include/argument.inc.php?id=$id' method='POST'>";
+						 
+						$sql="select * from argumente where id=$id";
+						$result=mysqli_query($conn,$sql);
+						while($row=mysqli_fetch_assoc($result))
+						{
+							$titlu=$row['titlu'];
+						}
+							echo "<input type='text' name='titlu' placeholder='Titlul argumentului' required autocomplete='off' value='$titlu'></br></br>";
+						$sql2="select * from sec_arg where id_arg=$id";
+						$result2=mysqli_query($conn,$sql2);
+						while($row2=mysqli_fetch_assoc($result2))
+						{
+							$tip=$row2['tip'];
+							$continut=$row2['continut'];
+							$ordine=$row2['ordine'];
+							echo "<textarea class='c$tip' id='id$ordine' name='$tip$ordine' required >$continut</textarea>";
+						}
+						echo "<input type='text' name='total' id='numar' value='$ordine'>"		
+								?>
+									<span id="span"></span>
+									<span id="submit"></span>
+								</form>
+						</div>
+					
 
 						
 					</div>
-
-
-
-				</div>
-
-			</div>
-
-		</div>
+					
+					
+					<script type="text/javascript" src="js/functions.js"></script>
 
 </body>
+</html>

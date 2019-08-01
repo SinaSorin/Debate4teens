@@ -32,36 +32,31 @@ include_once 'include/dbh.inc.php';
 <div class="container">
 
 				<div class="navbar-header">
-					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
 							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
-					<!-- /Logo -->
-
-					<!-- Mobile toggle -->
 					<button class="navbar-toggle">
 						<span></span>
 					</button>
-					<!-- /Mobile toggle -->
 				</div>
-
-				<!-- Navigation -->
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a class="link"  href="index.php">Acasa</a></li>
+						<li><a class="link"  href="index.php">Acasă</a></li>
 						<li><a class="link"  href="format.php">Format</a></li>
-						<li><a class="link"  href="motiuni.php">Motiuni</a></li>
+						<li><a class="link"  href="motiuni.php">Moțiuni</a></li>
 						<li><a class="link"  href="argumentare.php">Argumentare</a></li>
+						<li><a class="link"  href="impromptu.php">Impromptu</a></li>
+						<li><a class="link"  href="documentare.php">Documentare</a></li>
 						<?php
 						if(!isset($_SESSION['u_id']))
 							echo '
-						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conecteaza-te</a></li>
-						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Inregistreaza-te</a></li>';
+						<li><a class="link" href="#" data-toggle="modal" data-target="#login-modal">Conectează-te</a></li>
+						<li><a class="link" href="#" data-toggle="modal" data-target="#register-modal">Înregistrează-te</a></li>';
 						else
 							echo '
 						<li><a class="link" href="cazuri.php">Cazuri</a></li>
-						<li><a class="link" href="include/logout.inc.php" id="logout">Deconecteaza-te</a></li>';
+						<li><a class="link" href="include/logout.inc.php" id="logout">Deconectează-te</a></li>';
 						
 						
 						?>
@@ -70,38 +65,61 @@ include_once 'include/dbh.inc.php';
  
 
 			</div>
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Conectează-te</h1><br>
+				  <form action="include/login.inc.php" autocomplete="off" method="POST">
+						<input type="text" name="uid" placeholder="Nume de utilizator"> 
+						<input type="password" name="pwd" placeholder="Parolă">
+						<input type="submit" name="submit" class="login loginmodal-submit" value="Conectare">
+				  </form>
+					
+				  
+				</div>
+			</div>
+		  </div>
+		  
+	
+
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="registermodal-container">
+					<h1>Creează un cont</h1><br>
+				  <form action="include/signup.inc.php" method="POST">
+						<input type="text" name="first" autocomplete="off" placeholder="Nume"> 
+						<input type="text" name="last" autocomplete="off" placeholder="Prenume">
+						<input type="text" name="uid" autocomplete="off" placeholder="Nume de utilizator">
+						<input type="text" name="email" autocomplete="off" placeholder="Email">
+						<input type="password" name="pwd" placeholder="Parolă">
+						<input type="password" name="pwd2" placeholder="Confirmă parolă">
+						<input type="submit" name="submit" class="login loginmodal-submit" value="Înregistrare">
+				  </form>
+					
+				 
+				</div>
+			</div>
+		  </div>
 <div id="why-us" class="section">
-
-			<!-- container -->
 			<div class="container">
-
-				<!-- row -->
 				<div class="row">
 					<div class="section-header text-center">
-						<h2>Argumentare si contra-argumentare</h2>
+						<h2>Argumentare și contra-argumentare</h2>
 						
 					</div>
-
-					
-
 				</div>
-				<!-- /row -->
-
-				
-
-				<!-- row -->
 				<div class="row">
 
 					<div class="col-md-6">
 						<h3></h3>
-						<p class="lead">Unul din cele mai populare modele de argumentare folosite in dezbaterile academice este modelul SEXI (acronim englezesc) sau ARDEI(acronim romanesc).
+						<p class="lead">Unul din cele mai populare modele de argumentare folosite în dezbaterile academice este modelul SEXI (acronim englezesc) sau ARDEI(acronim românesc).
 Se pot discerne 4 elemente:
 
-<ul style="list-style-type: circle">
-    <li> o afirmatie</li>
- <li>un rationament ( o inlantuire logica de enunturi)</li>
- <li>datele aduse in sprijinul rationamentului</li>
- <li>impactul(consecintele asumarii unui punct de vedere</li>
+<ul class="lead" style="list-style-type: circle">
+    <li> o afirmație</li>
+ <li>un raționament ( o înlănțuire logică de enunțuri)</li>
+ <li>datele aduse în sprijinul raționamentului</li>
+ <li>impactul(consecințele asumării unui punct de vedere)</li>
                         </ul>
                         </p>
 					</div>
@@ -114,35 +132,20 @@ Se pot discerne 4 elemente:
 					</div>
 
 				</div>
-				<!-- /row -->
-
 			</div>
-			<!-- /container -->
 
 		</div>
     
     
     
     <div id="why-us" class="section">
-
-			<!-- container -->
 			<div class="container">
-
-				<!-- row -->
 				<div class="row">
 					<div class="section-header text-center">
 						<h2>Rolurile vorbitorilor</h2>
 						
 					</div>
-
-					
-
 				</div>
-				<!-- /row -->
-
-				
-
-				<!-- row -->
 				<div class="row">
 
 					<div class="col-md-6" id="butoane">
@@ -162,16 +165,14 @@ Se pot discerne 4 elemente:
 					<div class="col-md-5 col-md-offset-1">
 						<p class="lead" >
                         <ul id="vorbitor" style="list-style-type:circle; font-size:18px; " class="area">
-                        <li>anunta motiunea</li><li>identifica si defineste elementele cheie ale motiunii</li><li>contextualizeaza motiunea</li><li>anunta starea de fapt(status-quo) si filozofia de caz</li><li>anunta diviziunea argumentelor intre vorbitori</li><li>prezinta partea sa de caz</li>
+                        <li>anunță moțiunea</li><li>identifică și definește elementele cheie ale moțiunii</li><li>contextualizează moțiunea</li><li>anunță starea de fapt(status-quo) și filozofia de caz</li><li>anunță diviziunea argumentelor între vorbitori</li><li>prezintă partea sa de caz</li>
                         </ul>
                         </p>
 							
 
 				</div>
-				<!-- /row -->
 
 			</div>
-			<!-- /container -->
 
 		</div>
     <script type="text/javascript" src="js/functions.js"></script>

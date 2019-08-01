@@ -2,7 +2,8 @@
 session_start();
 include_once 'include/dbh.inc.php';
 
- ?><html>
+ ?>
+ <html>
  <head>
  <title>Index</title>
  <link rel="shortcut icon" href="motanel.png" type="image/png">
@@ -20,34 +21,17 @@ include_once 'include/dbh.inc.php';
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>  
-<style>
-.nav>li>a {
-	color:white;
-}
-.nav>li>a:hover  {
-	color:white;
-}
-
-</style>
- </head>
- <body>
- 
-			
- <div class="back" style="background-image: url(poze/1.png)">
- 
- <div class="overlay">
-
-   <div class="ceva"><b><h1>Debate4Teens</h1>
-<p class="obiectiv">Obiectivul principal al acestui site este de a  oferi informații cu privire la formatul dezbaterilor academice și influența deosebită pe care acestea o au asupra individului.Sperăm ca comunitatea de debateri să crească.</p></b>
-</div>
-		  </div>
-		  <div class="container">
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+     <link type="text/css" rel="stylesheet" href="css/style.css"/>
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" /><link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="container">
 
 				<div class="navbar-header">
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
-							<span class="debate" style="color:white">Debate4teens</span>
+							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
 					<button class="navbar-toggle">
@@ -75,10 +59,10 @@ include_once 'include/dbh.inc.php';
 						?>
 						
 					</ul>
+ 
 
 			</div>
-  </div>
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	  <div class="modal-dialog">
 				<div class="loginmodal-container">
 					<h1>Conectează-te</h1><br>
@@ -113,46 +97,33 @@ include_once 'include/dbh.inc.php';
 				</div>
 			</div>
 		  </div>
-  <center>
-	
-  <img src="poze/arrow2.png" class="sageata">
-  </center>
-     <div class="desc">
-    <div class="continut">
-      <p class="subtitlu">
-           Bine ați venit în lumea dezbaterilor!
-        </p>
-		<p class="lead"> Debate4Teens îți oferă posibilitatea de:</p>
-        <p><span class="spatiu"></span>
-            <div class="feature">
-							<i class=" icon glyphicon glyphicon-book"></i>
-							<div class="feature-content">
-								<h4>A înțelege formatul dezbaterilor </h4>
-								<p>Oferim informații referitoare la moțiuni, format,modalități de argumentare,rolul vorbitorilor.</p>
-							</div>
-						</div>
-						<div class="feature">
-							<i class="icon glyphicon glyphicon-eye-open"></i>
-							<div class="feature-content">
-								<h4>A te documenta</h4>
-								<p>Pe această platformă poți face teste interactive.</p>
-							</div>
-						</div>
-						<div class="feature">
-							<i class="icon glyphicon glyphicon-pencil"></i>
-							<div class="feature-content">
-								<h4>A-ți construi cazul.</h4>
-								<p>Site-ul conține șabloane ce facilitează construirea argumentelor.</p>
-							</div>
-						</div>
-        </p>
-		
-    </div>
-    
-    </div>
+<div id="why-us" class="section">
+			<div class="container">
+			<div class="sablon">
+			<?php
+			$id=$_GET['id'];
+			echo "<form action='include/lectie.php?id=$id' method='POST'>"?>
 
-  
-  
- </body>
-</html>
-	
+<input type="text" name="titlu" autocomplete="off" placeholder="Titlu" required>
+<br></br>
+<textarea placeholder="Scurta descriere" name="descriere"></textarea>
+<br></br>
+  <textarea id="froala-editor" name="content"></textarea>
+  <input class="v" type="submit" name="submit">
+</form>
+</div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0//js/froala_editor.pkgd.min.js"></script>
+<script>
+  $(function() {
+  $('textarea#froala-editor').froalaEditor()
+});</script>
+				
+
+			</div>
+
+		</div>
+    
+    
+    
+
+</body>

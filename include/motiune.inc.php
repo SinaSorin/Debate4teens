@@ -7,7 +7,7 @@ $motiune;
 $id=$_SESSION['u_id'];
 	$sql="INSERT INTO motiuni(nume,id_user) VALUES('$motiune',$id)";
 	$result=mysqli_query($conn,$sql);
-	header("Location: ../blog.php");
+	header("Location: ../cazuri.php");
 	exit();
 
  ?>

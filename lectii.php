@@ -1,8 +1,34 @@
 <?php
 session_start();
 include_once 'include/dbh.inc.php';
+$id=$_GET['id'];
+						if($id==1)
+								$domeniu= "Cultură";
+							else
+								if($id==2)
+									$domeniu= "Educație";
+								else
+									if($id==3)
+										$domeniu= "Mediu";
+									else
+										if($id==4)
+											$domeniu= "Sport";
+										else
+											if($id==5)
+												$domeniu= "Sănătate";
+											else
+												if($id==6)
+													$domeniu= "Politică";
+												else
+													if($id==7)
+														$domeniu= "Alte domenii";
+													else
+													{
+													header("Location: documentare.php");
+												}
+													?>
 
- ?><html>
+ <html>
  <head>
  <title>Index</title>
  <link rel="shortcut icon" href="motanel.png" type="image/png">
@@ -20,34 +46,25 @@ include_once 'include/dbh.inc.php';
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>  
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+     <link type="text/css" rel="stylesheet" href="css/style.css"/>
+<head>
 <style>
-.nav>li>a {
-	color:white;
-}
-.nav>li>a:hover  {
-	color:white;
+.impromptu {
+	margin-left: 0px;
+	color:black;
+	font-weight:500;
 }
 
 </style>
- </head>
- <body>
- 
-			
- <div class="back" style="background-image: url(poze/1.png)">
- 
- <div class="overlay">
-
-   <div class="ceva"><b><h1>Debate4Teens</h1>
-<p class="obiectiv">Obiectivul principal al acestui site este de a  oferi informații cu privire la formatul dezbaterilor academice și influența deosebită pe care acestea o au asupra individului.Sperăm ca comunitatea de debateri să crească.</p></b>
-</div>
-		  </div>
-		  <div class="container">
+</head>
+<body>
+<div class="container">
 
 				<div class="navbar-header">
 					<div class="navbar-brand">
 						<a class="logo" href="index.php">
-							<span class="debate" style="color:white">Debate4teens</span>
+							<span class="debate" style="color:gray">Debate4teens</span>
 						</a>
 					</div>
 					<button class="navbar-toggle">
@@ -75,10 +92,10 @@ include_once 'include/dbh.inc.php';
 						?>
 						
 					</ul>
+ 
 
 			</div>
-  </div>
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     	  <div class="modal-dialog">
 				<div class="loginmodal-container">
 					<h1>Conectează-te</h1><br>
@@ -113,46 +130,54 @@ include_once 'include/dbh.inc.php';
 				</div>
 			</div>
 		  </div>
-  <center>
-	
-  <img src="poze/arrow2.png" class="sageata">
-  </center>
-     <div class="desc">
-    <div class="continut">
-      <p class="subtitlu">
-           Bine ați venit în lumea dezbaterilor!
-        </p>
-		<p class="lead"> Debate4Teens îți oferă posibilitatea de:</p>
-        <p><span class="spatiu"></span>
-            <div class="feature">
-							<i class=" icon glyphicon glyphicon-book"></i>
-							<div class="feature-content">
-								<h4>A înțelege formatul dezbaterilor </h4>
-								<p>Oferim informații referitoare la moțiuni, format,modalități de argumentare,rolul vorbitorilor.</p>
-							</div>
-						</div>
-						<div class="feature">
-							<i class="icon glyphicon glyphicon-eye-open"></i>
-							<div class="feature-content">
-								<h4>A te documenta</h4>
-								<p>Pe această platformă poți face teste interactive.</p>
-							</div>
-						</div>
-						<div class="feature">
-							<i class="icon glyphicon glyphicon-pencil"></i>
-							<div class="feature-content">
-								<h4>A-ți construi cazul.</h4>
-								<p>Site-ul conține șabloane ce facilitează construirea argumentelor.</p>
-							</div>
-						</div>
-        </p>
+			<div class="container">
+				<div class="row">
+					<div class="section-header text-center">
+						<h2><?php 
+						echo $domeniu;
+						?>
+						
+						
+						</h2>
+						
+					</div>
+
+					
+
+				</div>
+				</div>
+				
+<div class="container1">
+				<?php 
+				
+				$sql="select * from lectii where id_domeniu=$id";
+				$result=mysqli_query($conn,$sql);
+				$resultCheck=mysqli_num_rows($result);
+				if($resultCheck>0)
+				while($row=mysqli_fetch_assoc($result))
+				{
+					$id_lectie=$row['id'];
+					$titlu=$row['titlu'];
+					$descriere=$row['descriere'];
+					echo "<a href='lectie.php?id=$id_lectie'><div class='capitol1 '>
+					<p class='nume impromptu'>$titlu</p>
+					<p class='nume'>$descriere</p></div></a>";	
+				}
+			if(isset($_SESSION['u_status']))
+			{
+				if($_SESSION['u_status'])
+					echo "<a href='crearelectie.php?id=$id'><div class='capitol1'>
+			<p class='nume impromptu adauga'>Adaugă o lectie</p>
+	</a>";	
+			}
+
+
 		
+			
+    
+	?>
     </div>
     
-    </div>
 
-  
-  
- </body>
+</body>
 </html>
-	
