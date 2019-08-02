@@ -96,7 +96,10 @@ if(!isset($_SESSION['u_id']))
 								while($row=mysqli_fetch_assoc($result))
 								{	
 									$id_argument=$row['id'];
-									echo "<h3>Argumentul $i:  ".$row['titlu']."</h3><a class='glyphicon glyphicon-trash cos' href='include/deletea.php?id=$id_argument'></a></br></br>";
+									echo "<h3>Argumentul $i:  ".$row['titlu']."</h3>
+									<a class='glyphicon glyphicon-trash cos' href='include/deletea.php?id=$id_argument'></a>
+									<a href='edit.php?id=$id_argument' class='glyphicon glyphicon-pencil cos'></a>
+</br></br>";
 									echo "<div>";
 									$id=$row['id'];
 									$sql2="select * from sec_arg where id_arg=$id";

@@ -62,18 +62,11 @@ if(!isset($_SESSION['u_id']))
 
 			</div>
 	<div id="main" class="col-md-12">
-						<div class="sablon">
-						<div class="sexi">
-						<a class="v s" id="h" onclick="sexi('s')">Statement</a>
-						<a class="v x" id="h" onclick="sexi('x')">Explanation</a>
-						<a class="v e" id="h" onclick="sexi('e')">Example</a>
-						<a class="v i" id="h" onclick="sexi('i')">Impact</a>
-						<a class="v sterge" id="h" onclick="sterge()">Sterge</a>
-						</div>
+						<div class="sablon"><center><h3>Editare argument</h3></center>
 						<hr></br>
 						<?php
 						$id=$_GET['id'];
-						 echo "<form action='include/argument.inc.php?id=$id' method='POST'>";
+						 echo "<form action='include/edit.php?id=$id' method='POST'>";
 						 
 						$sql="select * from argumente where id=$id";
 						$result=mysqli_query($conn,$sql);
@@ -91,10 +84,9 @@ if(!isset($_SESSION['u_id']))
 							$ordine=$row2['ordine'];
 							echo "<textarea class='c$tip' id='id$ordine' name='$tip$ordine' required >$continut</textarea>";
 						}
-						echo "<input type='text' name='total' id='numar' value='$ordine'>"		
+						echo "<input type='text' name='total' id='numar' value='$ordine' style='display:none'>"		
 								?>
-									<span id="span"></span>
-									<span id="submit"></span>
+						<input type="submit" name="submit" class="v">
 								</form>
 						</div>
 					

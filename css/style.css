@@ -747,19 +747,6 @@ opacity: 1;}
 	color:red;
 	font-family: 'Montserrat', sans-serif;
 }
-
-.sterge {
-    font-size: 3vh;
-    position: relative;
-    bottom: 1.2vh;
-    border: 2px solid red;
-    border-radius: 50%;
-    padding: 8px;
-    text-align: center;
-    color: red;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
 .ascuns {
 	display:none;
 }

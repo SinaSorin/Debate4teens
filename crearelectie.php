@@ -106,9 +106,9 @@ include_once 'include/dbh.inc.php';
 
 <input type="text" name="titlu" autocomplete="off" placeholder="Titlu" required>
 <br></br>
-<textarea placeholder="Scurta descriere" name="descriere"></textarea>
+<textarea placeholder="Scurta descriere" name="descriere" required></textarea>
 <br></br>
-  <textarea id="froala-editor" name="content"></textarea>
+  <textarea id="froala-editor" name="content" required></textarea>
   <input class="v" type="submit" name="submit">
 </form>
 </div>
