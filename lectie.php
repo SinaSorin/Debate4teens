@@ -129,8 +129,49 @@ a {
 				}
 				else
 					echo "<p>Lectia cautata nu exista</p>";
+				if(isset($_SESSION['u_status']))
+					if($_SESSION['u_status'])
+					{
+						echo 	"<a class='v' href='creareintrebari.php?id=$id'>Adaugă intrebari</a>
+						";
+						$sql="SELECT * FROM intrebari WHERE id_lectie=$id";
+						$result=mysqli_query($conn,$sql);
+						$resultCheck=mysqli_num_rows($result);
+						if($resultCheck>0)
+						{
+							$i=0;
+							echo "<h2>Întrebări</h2>";
+							while($row=mysqli_fetch_assoc($result))
+							{
+								$i++;
+								$intrebare=$row['continut'];
+				$id_intrebare=$row['id'];
+				$id_lectie=$row['id_lectie'];
+				echo "<h3>".$i.".".$intrebare."</h3>";
+				$sql4="SELECT * FROM raspunsuri WHERE id_intrebare=$id_intrebare";
+				$result4=mysqli_query($conn,$sql4);
+				if(mysqli_num_rows($result4)>0)
+				{
+					echo  "<ul>";
+					while($row4=mysqli_fetch_assoc($result4))
+					{
+						
+						$raspuns=$row4['continut'];
+						$corect_r=$row4['corect'];
+							if($corect_r==1)
+								echo "<b><li class='verde'>$raspuns</li></b>";
+								//verde
+							else
+								echo "<li class='normal'>$raspuns</li>";
+								//nimic
+					}
+					echo "</ul>";
+				}
+							}
+						}
+							
+					}						
 				
-				echo 	"<a class='v' href='creareintrebari.php?id=$id'>Adaugă intrebari</a>";
 			?>
 			
 
